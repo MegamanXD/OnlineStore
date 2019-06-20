@@ -10,8 +10,26 @@ This app does not contain the node_modules folder, so you need to install them b
 
 ### 2. `npm start`
 
-Runs the app. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run the app. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__________________________________________________________________________________________________________________________________________
+Features included:
 
+_ Add/update/delete/view a list of Products (id, name, price, description, brand, producer, image URL)
 
+_ Add/update/delete/view a list of Product Categories (id, name)
 
+_ A product page that displays all available products (product names, prices, images)
 
+_ A product detail page
+
+_ 2 views: grid (more than 1 product per line) and list (1 product per line)
+
+_ Filter product by Category or by Price (price range between x and y)
+
+_ Products are be listed by page
+
+_ Search product by name 
+
+In this assignment, Backend REST API will be provided
+__________________________________________________________________________________________________________________________________________
+This assignment is from Web Programming course
