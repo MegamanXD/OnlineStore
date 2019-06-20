@@ -12,7 +12,7 @@ This app does not contain the node_modules folder, so you need to install them b
 
 Run the app. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 __________________________________________________________________________________________________________________________________________
-Features included:
+##Features included:
 
 _ Add/update/delete/view a list of Products (id, name, price, description, brand, producer, image URL)
 
