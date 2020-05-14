@@ -8,7 +8,7 @@ export default class ListView extends React.Component {
     //Constructor with the states
     constructor(props) {
         super(props);
-        this.state = {_id: 'Empty', id: '', name: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',
+        this.state = {id: '', productName: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',
             activePage: 1, itemsCountPerPage: 3};
         this.updateState = this.updateState.bind(this);
         this.reset = this.reset.bind(this);
@@ -22,7 +22,7 @@ export default class ListView extends React.Component {
 
     //Reset the form
     reset(){
-        this.setState({_id: 'Empty', id:'', name: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',})
+        this.setState({id: 'Empty', id:'', productName: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',})
     }
 
     //Update user input into the state
@@ -33,9 +33,9 @@ export default class ListView extends React.Component {
     }
 
     //Edit existing products
-    editProduct = (_id, id, name, price, description, brand, producer, imageUrl, productType) => {
+    editProduct = (id, productName, price, description, brand, producer, imageUrl, productType) => {
         //Throw the data into the form
-        this.setState({_id:_id, id: id, name: name, price: price, description: description, brand: brand, producer: producer, imageUrl: imageUrl, productType: productType});
+        this.setState({id: id, productName: productName, price: price, description: description, brand: brand, producer: producer, imageUrl: imageUrl, productType: productType});
 
         //Jump to the top to fill in the form
         let element = document.getElementById('jumpToTop');
@@ -43,7 +43,7 @@ export default class ListView extends React.Component {
     };
 
     render() {
-        const { _id, id, name, price, description, brand, producer, imageUrl, productType } = this.state;
+        const { id, productName, price, description, brand, producer, imageUrl, productType } = this.state;
         const {activePage, itemsCountPerPage} = this.state;
         let beginPage = itemsCountPerPage*(activePage-1);
         let endPage = itemsCountPerPage*activePage - 1;
@@ -68,7 +68,7 @@ export default class ListView extends React.Component {
                                                     </div>
 
                                                     <div className='col-lg-9'>
-                                                        <div className='mt-2'> {_id} </div>
+                                                        <div className='mt-2'> {id} </div>
                                                     </div>
                                                 </div>
 
@@ -88,7 +88,7 @@ export default class ListView extends React.Component {
                                                     </div>
 
                                                     <div className='col-lg-9'>
-                                                        <input type='text' className='form-control' name='name' value={name} onChange={this.updateState}/>
+                                                        <input type='text' className='form-control' name='productName' value={productName} onChange={this.updateState}/>
                                                     </div>
                                                 </div>
 
@@ -154,7 +154,7 @@ export default class ListView extends React.Component {
                                                 </div>
 
                                                 <div className='row'>
-                                                    <button className="btn-lg btn-info mx-auto mt-3" onClick={ () => value.addUpdateProduct(_id,id,name, price,description,brand,producer,imageUrl,productType) }>Add/Update</button>
+                                                    <button className="btn-lg btn-info mx-auto mt-3" onClick={ () => value.addUpdateProduct(id, productName, price,description,brand,producer,imageUrl,productType) }>Add/Update</button>
                                                     <button className="btn-lg btn-warning text-white mx-auto mt-3" onClick={this.reset}>Clear</button>
                                                 </div>
 
@@ -167,7 +167,7 @@ export default class ListView extends React.Component {
                                 {/* Map each element of the List to create cards */}
                                 {value.products.filter( (item,i) => i>= beginPage && i<= endPage ).map(
                                     product =>
-                                        <div className="card my-5 p-5 border-white" key={product._id}>
+                                        <div className="card my-5 p-5 border-white" key={product.id}>
                                             <div className='row no-gutters'>
                                                 {/* Product Image */}
                                                 <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12'>
@@ -178,17 +178,16 @@ export default class ListView extends React.Component {
                                                 {/* Product Details */}
                                                 <div className='col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12'>
                                                     <div className='card-body'>
-                                                        <b>Product ID:  </b>    {product._id}<br />
-                                                        <b>Dummy ID:    </b>    {product.id}<br />
-                                                        <b>Name:        </b>    {product.name}<br />
+                                                        <b>Product ID:  </b>    {product.id}<br />
+                                                        <b>Name:        </b>    {product.productName}<br />
                                                         <b>Price:       </b>    ${product.price}<br />
                                                         <b>Description: </b>    {product.description}<br />
                                                         <b>Brand:       </b>    {product.brand}<br />
                                                         <b>Producer:    </b>    {product.producer}<br />
                                                         <b>Category:    </b>    {product.productType}<br /><br />
 
-                                                        <button className="btn-lg btn-info mr-5" onClick={ () => this.editProduct(product._id, product.id, product.name, product.price, product.description, product.brand, product.producer, product.imageUrl, product.productType)}>Edit</button>
-                                                        <button className="btn-lg btn-danger" onClick={() => value.deleteProduct(product._id)}>Delete</button>
+                                                        <button className="btn-lg btn-info mr-5" onClick={ () => this.editProduct(product.id, product.productName, product.price, product.description, product.brand, product.producer, product.imageUrl, product.productType)}>Edit</button>
+                                                        <button className="btn-lg btn-danger" onClick={() => value.deleteProduct(product.id)}>Delete</button>
                                                     </div>
                                                 </div>
                                             </div>

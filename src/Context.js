@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import _ from 'lodash'
-
-const ProductURL = "http://rmit.chickenkiller.com:8080/products";
-const CategoryURL = 'http://rmit.chickenkiller.com:8080/productTypes';
+import axios from 'axios'
+import config from './config.json'
 
 //Start with creating the context
 //A context has 2 sides: a Provider that provides the info, and a Consumer that uses the info
@@ -12,7 +11,6 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
     state={
         products: [],
-        categories: [],
         productTypes:[],
         detailProduct: {},
         foundProducts: [],

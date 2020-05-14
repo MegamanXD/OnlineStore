@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './img/Logo.jpg'
-import styled from 'styled-components'
+import {FootWrapper} from './StyledComponents.js'
 
 export default class Footer extends React.Component {
     render() {
@@ -25,29 +25,3 @@ export default class Footer extends React.Component {
         )
     }
 }
-
-const FootWrapper = styled.div`
-.footer {
-    background-color: #40474e;
-}
-
-.footer img {
-    height: 9rem;
-    margin: 1.5rem 0;
-    border-radius: 2rem;
-}
-
-.footer i{
-    margin: 0 6px;
-}
-
-.footer i:hover {
-    color: #99f8f3 !important;
-}
-
-.hr {
-    width: 100%;
-    border-top: .5px solid white;
-    margin-top: 3rem;
-}
-`;

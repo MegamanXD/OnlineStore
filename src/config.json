@@ -1,0 +1,5 @@
+{
+    "api": {
+        "invokeURL": "https://9vym2kbic5.execute-api.ap-southeast-1.amazonaws.com/eCommerce"
+    }
+}

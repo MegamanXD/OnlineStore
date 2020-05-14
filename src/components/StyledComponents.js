@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const ButtonContainer = styled.button`
     text-transform: capitalize;
     font-size: 1.4rem;
@@ -82,4 +81,38 @@ export const ProductWrapper = styled.div`
     color: var(--mainBlue);
     cursor: pointer;
   }
+`;
+
+export const FootWrapper = styled.div`
+.footer {
+    background-color: #40474e;
+}
+
+.footer img {
+    height: 9rem;
+    margin: 1.5rem 0;
+    border-radius: 2rem;
+}
+
+.footer i{
+    margin: 0 6px;
+}
+
+.footer i:hover {
+    color: #99f8f3 !important;
+}
+
+.hr {
+    width: 100%;
+    border-top: .5px solid white;
+    margin-top: 3rem;
+}
+`;
+
+export const NavWrapper = styled.nav`
+.nav-link{
+    color: var(--mainWhite) !important;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+}
 `;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import {NavWrapper} from "./StyledComponents.js";
 import {ProductConsumer} from '../Context'
 
 export default class Navbar extends Component {
@@ -52,7 +52,7 @@ export default class Navbar extends Component {
                   <input className='px-2' list="ProductNameList" type='text' placeholder='Product name' name='name' value={this.state.name} onChange={this.handleChange}/>
                     <datalist id='ProductNameList'>
                         {value.products.map(
-                            product => <option value={product.name} key={product._id}/>
+                            product => <option value={product.productName} key={product.id}/>
                         )}
                     </datalist>
 
@@ -67,11 +67,3 @@ export default class Navbar extends Component {
     );
   }
 }
-
-const NavWrapper = styled.nav`
-    .nav-link{
-        color: var(--mainWhite) !important;
-        font-size: 1.3rem;
-        text-transform: capitalize;
-    }
-`;
