@@ -62,7 +62,7 @@ export default class Search extends React.Component {
                                         {/*End product type filter*/}
 
                                         <button onClick={ () => {
-                                            value.setProducts();
+                                            value.getProducts();
                                             this.setState({minPrice: '', maxPrice: '', category: ''});
                                             value.setAll();
                                             this.backToPageOne();

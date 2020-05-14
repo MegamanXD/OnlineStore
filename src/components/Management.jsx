@@ -1,7 +1,7 @@
 import React from "react";
 import NoImage from "./img/NoImage.png";
 import {ProductConsumer} from '../Context'
-import {ProductWrapper} from './StyledCraps'
+import {ProductWrapper} from './StyledComponents'
 import Pagination from "react-js-pagination";
 
 export default class ListView extends React.Component {
@@ -22,7 +22,7 @@ export default class ListView extends React.Component {
 
     //Reset the form
     reset(){
-        this.setState({id: 'Empty', id:'', productName: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',})
+        this.setState({id:'', productName: '', price: '', description: '', brand: '', producer: '', imageUrl: '', productType: '',})
     }
 
     //Update user input into the state
@@ -65,16 +65,6 @@ export default class ListView extends React.Component {
                                                 <div className='row my-2'>
                                                     <div className='col-lg-3 col-form-label'>
                                                         <b>Product ID</b>
-                                                    </div>
-
-                                                    <div className='col-lg-9'>
-                                                        <div className='mt-2'> {id} </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className='row my-2'>
-                                                    <div className='col-lg-3 col-form-label'>
-                                                        <b>Dummy ID</b>
                                                     </div>
 
                                                     <div className='col-lg-9'>
