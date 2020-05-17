@@ -8,7 +8,9 @@ export default class Details extends Component {
     return (
         <ProductConsumer>
           { value => {
+            //Get all neccessary data from the ContextAPI
             const {brand, imageUrl, description, price, productName} = value.detailProduct;
+
             return(
                 <div className='container py-5'>
                   {/*Product name*/}
@@ -19,49 +21,52 @@ export default class Details extends Component {
                   </div>
                   {/*End product name*/}
 
-                  {/*Product description*/}
-                    {/*product image*/}
                   <div className='row'>
+                    {/*Product image*/}
                     <div className='col-10 mx-auto col-md-6 my-3 text-capitalize'>
                       <img src={imageUrl} className='img-fluid' alt='product'/>
                     </div>
                     {/*End product image*/}
 
-
                     <div className='col-10 mx-auto col-md-6 my-3 text-capitalize'>
-                      {/*product text*/}
+                      {/*Product name*/}
                       <h1>model: {productName}</h1>
+                      {/*End product name*/}
 
+                      {/* Brand */}
                       <h4 className='text-title text-uppercase text-muted mt-3 mb-2'>
                         made by: <span className='text-uppercase'> {brand}</span>
                       </h4>
+                      {/* End brand */}
 
+                      {/* Price */}
                       <h4 className='text-blue'>
                         <strong>
                           price: <span>$</span> {price}
                         </strong>
                       </h4>
+                      {/* End price */}
 
+                      {/* Description */}
                       <p className='text-capitalize font-weight-bold mt-3 mb-0'>
                         Product info
                       </p>
+                      {/* End description */}
 
                       <p className='text-muted lead'> {description}</p>
-                      {/*End product text*/}
+                      {/* End description */}
 
-                      {/*buttons*/}
+                      {/* Back button */}
                       <div>
                         <Link to='/'>
                           <ButtonContainer>
                             back to products
                           </ButtonContainer>
                         </Link>
-
                       </div>
-                      {/*End buttons*/}
+                      {/*End back button*/}
                     </div>
                   </div>
-                  {/*End product description*/}
                 </div>
                 )
           }}

@@ -61,6 +61,7 @@ export default class Search extends React.Component {
                                         <br/><br/>
                                         {/*End product type filter*/}
 
+                                        {/* Refresh page button */}
                                         <button onClick={ () => {
                                             value.getProducts();
                                             this.setState({minPrice: '', maxPrice: '', category: ''});
@@ -70,6 +71,7 @@ export default class Search extends React.Component {
                                         >
                                             Refresh page
                                         </button>
+                                        {/* End refresh page button */}
                                     </div>
                                 </div>
                                 <br/>

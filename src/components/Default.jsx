@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+//When there's any error, this page will be displayed
 export default class Default extends Component {
   render() {
     return (

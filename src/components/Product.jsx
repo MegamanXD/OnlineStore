@@ -14,20 +14,25 @@ export default class Product extends Component {
             <ProductConsumer>
                 { value =>
                     <div className="img-container p-5" onClick={() => value.handleDetail(id) }>
+                        {/* Product image */}
                         <Link to="/details">
                             <img src={imageUrl} alt="product" className="card-img-top img-fluid"/>
                         </Link>
+                        {/* End product image */}
                     </div>
                 }
             </ProductConsumer>
 
-          {/*Card footer*/}
           <div className='card-footer d-flex justify-content-between'>
+            {/* Product name */}
             <p className="align-self-center mb-0">{productName}</p>
+            {/* End product name */}
+
+            {/* Product price */}
             <h5 className="text-blue font-italic mb-0">
               <span className='mr-1'>$</span>{price}
             </h5>
-
+            {/* End product price */}
           </div>
         </div>
       </ProductWrapper>
