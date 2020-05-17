@@ -3,8 +3,8 @@ import _ from 'lodash'
 import axios from 'axios'
 import config from './config.json'
 
-//Start with creating the context
-//A context has 2 sides: a Provider that provides the info, and a Consumer that uses the info
+/* Start with creating the context API
+A context has 2 sides: a Provider that provides the info, and a Consumer that uses the info */
 const ProductContext = React.createContext();
 
 //Next, we define the Provider
@@ -26,6 +26,7 @@ class ProductProvider extends Component {
     //Create new product
     createProduct = async (id, productName, price, description, brand, producer, imageUrl, productType) => {
         try {
+            //Generate an object for the new data
             const params = {
                 "id": id,
                 "productName": productName,
@@ -37,10 +38,16 @@ class ProductProvider extends Component {
                 "productType": productType
             };
 
+            //Perform action
             await axios.post(`${config.api.invokeURL}/ecommerce/${id}`, params);
+
+            //Show the user the results
             alert('Added!');
+
+            //Reload the list of products
             this.getProducts();
         } catch (error) {
+            //Show the user the results
             alert(`Unable to add product: ${error}`)
         }
     }
@@ -48,8 +55,10 @@ class ProductProvider extends Component {
     //Read all products
     getProducts = async () => {
         try {
+            //Perform action
             const res = await axios.get(`${config.api.invokeURL}/ecommerce/`);
 
+            //Filter out all objects with missing data
             const data = res.data.filter(
                 product =>
                     product.id &&
@@ -62,9 +71,13 @@ class ProductProvider extends Component {
                     product.productType
             );
 
+            //Set the list of products to the state
             this.setState({ products: data, foundProducts: data });
+
+            //Set the list of producTypes to the state
             this.setState({ productTypes: _.uniq(this.state.products.map(product => product.productType)) })
         } catch (error) {
+            //Show the user the results
             alert(`Unable to get all products: ${error}`)
         }
     }
@@ -72,6 +85,7 @@ class ProductProvider extends Component {
     //Update product
     updateProduct = async (id, productName, price, description, brand, producer, imageUrl, productType) => {
         try {
+            //Generate an object for the new data
             const params = {
                 "id": id,
                 "productName": productName,
@@ -83,22 +97,35 @@ class ProductProvider extends Component {
                 "productType": productType
             };
 
+            //Perform action
             await axios.patch(`${config.api.invokeURL}/ecommerce/${id}`, params);
+
+            //Show the user the results
             alert('Updated!');
+
+            //Reload the list of products
             this.getProducts();
         } catch (error) {
+            //Show the user the results
             alert(`Unable to update product: ${error}`)
         }
     }
 
     //Delete a product
     deleteProduct = async (id) => {
+        //Prompt the user to confirm their intention
         if (window.confirm("Do you want to delete?")) {
             try {
+                //Perform action
                 await axios.delete(`${config.api.invokeURL}/ecommerce/${id}`);
+
+                //Show the user the results
                 alert('Deleted!');
+                
+                //Reload the list of products
                 this.getProducts();
             } catch (error) {
+                //Show the user the results
                 alert(`Unable to delete product: ${error}`)
             }
         }
@@ -107,26 +134,25 @@ class ProductProvider extends Component {
     //Add or update our products
     addUpdateProduct = (id, productName, price, description, brand, producer, imageUrl, productType) => {
         if (this.state.products.map(product => product.id).includes(id)) {
+            //If the id already exists, update the product
             this.updateProduct(id, productName, price, description, brand, producer, imageUrl, productType);
         }
         else {
+            //Otherwise, add it
             this.createProduct(id, productName, price, description, brand, producer, imageUrl, productType);
         }
     };
 
     /* Set display mode */
-    //Set all product mode
+    //Set display mode to All Products
     setAll = () => { this.setState({ allOrFound: 'all' }) };
 
-    //Set found product mode
+    //Set display mode to Found Products
     setFound = () => { this.setState({ allOrFound: 'found' }) };
 
-    //A method to get a product
-    getItem = (id) => this.state.products.find(item => item.id === id);
-
-    //This method helps us display our Product Details
+    //Get the clicked-on product for Details page
     handleDetail = (id) => {
-        const product = this.getItem(id);
+        const product = this.state.products.find(item => item.id === id);
         this.setState({ detailProduct: product })
     };
 
