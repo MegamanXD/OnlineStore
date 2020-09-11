@@ -20,3 +20,6 @@ docker run -p [real_port]:[app_default_port] store
 --> http://localhost:[real_port] to view it in the browser.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Some fucking conflicts, ha ha ha :V
+
+-------------------------------------
+creating some conflicts
